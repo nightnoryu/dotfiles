@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+update_system() {
+  print_header "updating system..."
+  sudo pacman -Syu
+  echo
+}
+
+clear_pacman_cache() {
+  print_header "clearing pacman cache..."
+  PACMAN_CACHE_SPACE="$(du -sh /var/cache/pacman/pkg/)"
+  paccache -vrk2
+  paccache -ruk0
+  echo "pacman cache cleared, reclaimed $PACMAN_CACHE_SPACE"
+  echo
+}
+
+remove_orphaned_packages() {
+  print_header "removing orphaned packages..."
+  ORPHANED=$(pacman -Qdtq)
+  if [ -n "$ORPHANED" ]; then
+    echo "$ORPHANED" | sudo pacman -Rns -
+    ORPHANED_COUNT=$(echo "$ORPHANED" | wc -l)
+    echo "removed $ORPHANED_COUNT orphaned packages"
+    pacman -Qdtq | sudo pacman -Rns -
+  else
+    echo "no orphaned packages found"
+  fi
+  echo
+}
+
+clear_local_cache() {
+  print_header "clearing local cache..."
+  LOCAL_CACHE_SPACE="$(du -sh ~/.cache)"
+  rm -rf ~/.cache/
+  echo "local cache cleard, reclaimed $LOCAL_CACHE_SPACE"
+  echo
+}
+
+clear_system_logs() {
+  print_header "clearing system logs..."
+  sudo journalctl --vacuum-time=7d
+  echo
+}
+
+print_header() {
+  GREEN='\033[0;32m'
+  NC='\033[0m'
+  echo -e "${GREEN}${1}${NC}"
+}
+
+update_system
+clear_pacman_cache
+remove_orphaned_packages
+clear_local_cache
+clear_system_logs

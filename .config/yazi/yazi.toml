@@ -1,0 +1,4 @@
+[manager]
+linemode       = "size"
+show_hidden    = true
+title_format   = "{cwd}"
