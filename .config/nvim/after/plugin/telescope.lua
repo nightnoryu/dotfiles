@@ -22,7 +22,6 @@ telescope.setup({
       '--smart-case',
       '--hidden',
       '-g', '!.git',
-      '-g', '!yarn.lock',
     },
 
     layout_config = {
@@ -48,7 +47,7 @@ telescope.setup({
       },
     },
 
-    file_ignore_patterns = { '%.git/', 'node_modules/', '__pycache__/', '%.idea/', 'var/', 'vendor/' },
+    file_ignore_patterns = { '%.git/', 'var/', 'vendor/' },
   },
 
   extensions = {

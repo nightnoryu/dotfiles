@@ -30,7 +30,7 @@ require('packer').startup(function(use)
   use('hrsh7th/nvim-cmp')
   use('ray-x/lsp_signature.nvim')
 
-  -- Searching
+  -- File navigation
   use({
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -40,7 +40,7 @@ require('packer').startup(function(use)
     },
   })
 
-  -- Project management
+  -- VCS
   use('tpope/vim-fugitive')
   use('lewis6991/gitsigns.nvim')
 
@@ -50,12 +50,7 @@ require('packer').startup(function(use)
   use('tpope/vim-repeat')
   use('windwp/nvim-autopairs')
 
-  -- Miscellaneous utilities
-  use({
-    'tpope/vim-dispatch',
-    opt = true,
-    cmd = {'Make', 'Dispatch'},
-  })
+  -- Miscellaneous
   use({
     'nathom/filetype.nvim',
     setup = function()
