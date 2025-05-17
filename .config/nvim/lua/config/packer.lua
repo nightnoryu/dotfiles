@@ -39,6 +39,7 @@ require('packer').startup(function(use)
       'nvim-telescope/telescope-fzy-native.nvim',
     },
   })
+  use('stevearc/oil.nvim')
 
   -- VCS
   use('tpope/vim-fugitive')

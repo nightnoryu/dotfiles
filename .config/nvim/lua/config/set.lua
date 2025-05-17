@@ -1,4 +1,4 @@
-vim.opt.spelllang = 'en_us'
+vim.opt.spelllang = 'en_us,ru_yo'
 vim.opt.history = 500
 
 -- Priority of EOF formats
