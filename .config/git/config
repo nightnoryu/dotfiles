@@ -1,0 +1,33 @@
+[core]
+  compression = 9
+  preloadindex = true
+
+[advice]
+  addEmptyPathspec = false
+  pushNonFastForward = false
+  statusHints = false
+
+[init]
+  defaultBranch = master
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[log]
+  abbrevCommit = true
+
+[push]
+  autoSetupRemote = true
+
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+
+[pager]
+  diff = bat
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
