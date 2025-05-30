@@ -24,7 +24,6 @@ remove_orphaned_packages() {
     echo "$ORPHANED" | sudo pacman -Rns -
     ORPHANED_COUNT=$(echo "$ORPHANED" | wc -l)
     echo "removed $ORPHANED_COUNT orphaned packages"
-    pacman -Qdtq | sudo pacman -Rns -
   else
     echo "no orphaned packages found"
   fi
