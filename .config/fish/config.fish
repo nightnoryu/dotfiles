@@ -21,6 +21,7 @@ alias gl="git log --all --graph"
 
 alias ga="git add"
 alias gc="git commit"
+alias gco="git checkout"
 
 alias gp="git push"
 alias gu="git pull"
