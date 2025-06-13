@@ -17,7 +17,7 @@ alias g="git"
 
 alias gs="git status --short"
 alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
-alias gl="git log --all --graph"
+alias gl="git log  --graph"
 
 alias ga="git add"
 alias gc="git commit"
