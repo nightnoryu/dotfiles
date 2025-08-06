@@ -1,29 +1,8 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
-local sorters = require('telescope.sorters')
-local previewers = require('telescope.previewers')
 
 telescope.setup({
   defaults = {
-    file_sorter = sorters.get_fzy_sorter,
-    prompt_prefix = '$ ',
-
-    file_previewer = previewers.vim_buffer_cat.new,
-    grep_previewer = previewers.vim_buffer_vimgrep.new,
-    qflist_previewer = previewers.vim_buffer_qflist.new,
-
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--hidden',
-      '-g', '!.git',
-    },
-
     layout_config = {
       prompt_position = 'bottom',
       horizontal = {
@@ -42,24 +21,14 @@ telescope.setup({
       i = {
         ['<C-x>'] = false,
         ['<C-s>'] = actions.select_horizontal,
-        ['<C-Down>'] = actions.cycle_history_next,
-        ['<C-Up>'] = actions.cycle_history_prev,
       },
-    },
-
-    file_ignore_patterns = { '%.git/', 'var/', 'vendor/' },
-  },
-
-  extensions = {
-    fzy_native = {
-      override_generic_sorter = true,
-      override_file_sorter = true,
     },
   },
 })
-telescope.load_extension('fzy_native')
 
-vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true, silent = true })
+local builtin = require('telescope.builtin')
+
+vim.keymap.set('n', '<C-p>', builtin.git_files)
+vim.keymap.set('n', '<leader>ff', builtin.find_files)
+vim.keymap.set('n', '<leader>fg', builtin.live_grep)
+vim.keymap.set('n', '<leader>fh', builtin.help_tags)

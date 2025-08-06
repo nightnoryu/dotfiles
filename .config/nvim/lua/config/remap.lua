@@ -1,41 +1,31 @@
 vim.g.mapleader = ' '
 
-vim.api.nvim_set_keymap('n', 'Q', '<nop>', {})
+vim.keymap.set('n', 'Q', '<nop>')
 
-vim.api.nvim_set_keymap('n', '<MiddleMouse>', '<nop>', { silent = true })
-vim.api.nvim_set_keymap('i', '<MiddleMouse>', '<nop>', { silent = true })
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
 
--- Center the screen on certain actions in order not to get lost
-vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'J', 'v:count ? \'J\' : \'mzJ`z\'', { noremap = true, silent = true, expr = true })
+vim.keymap.set('n', '<Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Up>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
--- Intuitive line movement (if count is not provided, move by displayed lines)
-vim.api.nvim_set_keymap('n', 'j', 'v:count ? \'j\' : \'gj\'', { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('n', 'k', 'v:count ? \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'J', 'v:count ? \'J\' : \'mzJ`z\'', { expr = true })
 
--- Copy and paste using system clipboard
-vim.api.nvim_set_keymap('n', '<leader>y', '\"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>y', '\"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>p', '\"+p', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>p', '\"+p', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>y', '\"+y')
+vim.keymap.set('v', '<leader>y', '\"+y')
 
--- Change and delete to blackhole register
-vim.api.nvim_set_keymap('n', 'c', '\"_c', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'c', '\"_c', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'C', '\"_C', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'x', '\"_x', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'x', '\"_x', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'X', '\"_X', { noremap = true, silent = true })
+vim.cmd [[
+function! Sort(type, ...)
+  '[,']sort
+endfunction
+nnoremap <silent> gs :set opfunc=Sort<CR>g@
+]]
 
--- Faster movement between windows
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
-
--- Window resizing with arrow keys
-vim.api.nvim_set_keymap('n', '<Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Up>', ':resize +2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Down>', ':resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-j>', '<C-^>')

@@ -10,7 +10,7 @@ local function fileinfo()
   return string.format('%s[%s]', vim.bo.fileencoding, vim.bo.fileformat)
 end
 
-require 'lualine'.setup {
+require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'edge',
