@@ -1,7 +1,6 @@
 gnome
 kitty
 fish
-tmux
 yazi
 ttf-firacode-nerd
 
@@ -18,9 +17,6 @@ telegram-desktop
 keepassxc
 htop
 
-zathura
-zathura-djvu
-zathura-pdf-mupdf
 mpv
 yt-dlp
 ffmpeg
