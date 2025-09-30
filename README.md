@@ -1,8 +1,6 @@
 # My dotfiles
 
-A fairly simple Arch Linux setup for development.
-
-Credit for Firefox styles: [Firefox UI Fix](https://github.com/black7375/Firefox-UI-Fix).
+My fairly simple Arch Linux setup.
 
 ## Installation
 
