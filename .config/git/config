@@ -28,6 +28,3 @@
 
 [pager]
   diff = bat
-
-[url "git@github.com:"]
-  insteadOf = "gh:"
