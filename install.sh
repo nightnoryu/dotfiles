@@ -29,11 +29,6 @@ copy_dotfiles() {
   cp -r .config/* ~/.config/
 }
 
-setup_firefox() {
-  timeout 10 firefox --headless
-  cp -r firefox/* ~/.mozilla/firefox/*default-release/
-}
-
 set_login_shell() {
   chsh -s /usr/bin/fish
 }
@@ -57,7 +52,6 @@ install_yay
 
 create_default_folders
 copy_dotfiles
-setup_firefox
 set_login_shell
 
 remove_unused_packages
